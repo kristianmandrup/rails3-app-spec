@@ -66,13 +66,15 @@ module RSpec::RailsApp::Artifact
 
       def matches?(generator, &block)            
         self.artifact_name = case artifact_type
-        when :view
-          File.expand_path(send :"#{artifact_type}_file_name", folder, action, view_ext)          
+        when :view                                           
+          find_view_method = "#{artifact_type}_file_name"
+          File.expand_path(send find_view_method, folder, action, view_ext)          
         else                                                     
-          if respond_to? :existing_file_name
-            send :existing_file_name, artifact_name, artifact_type 
+          find_existing_artifact_method = "existing_#{artifact_type}_file"
+          if respond_to? find_existing_artifact_method
+            send find_existing_artifact_method, artifact_name, artifact_type 
           else
-            send :"#{artifact_type}_file_name", artifact_name
+            raise "The method ##{find_existing_artifact_method} to find the artifact was not available"
           end
         end
 
