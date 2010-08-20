@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'rails view helper' do
   use_helper :view
 
-  before :each do              
+  before do              
     create_view :account, :edit do
       %q{
         <h1><%= title %></h1>
@@ -11,17 +11,23 @@ describe 'rails view helper' do
     end    
   end
 
-  after :each do              
-    remove_view :account, :edit
+  after do              
+    # remove_view :account, :edit
   end
-    
-  it "should have an account/edit view file that displays a title" do      
-    root_dir.should have_view :account, :edit do |klass|
-      file.should match /<%=\s*title\s*%>/
+
+  describe '#have_view' do
+    it "should have an account/edit view file that displays a title" do      
+      root_dir.should have_view :account, :edit do |klass|
+        klass.should match /<%=\s*title\s*%>/
+      end
     end
-    
-    root_dir.should have_view_file :account, :edit do |file|
-      file.should match /<%=\s*title\s*%>/
-    end    
+  end
+  
+  describe '#have_view_file' do
+    it "should have an account/edit view file that displays a title" do          
+      root_dir.should have_view_file :account, :edit do |file|
+        file.should match /<%=\s*title\s*%>/
+      end    
+    end
   end
 end

@@ -68,11 +68,9 @@ module RSpec::RailsApp::Artifact
         self.artifact_name = case artifact_type
         when :view
           File.expand_path(send :"#{artifact_type}_file_name", folder, action, view_ext)          
-        else
-          found_file = send :existing_file_name, artifact_name, artifact_type
-          return found_file if found_file
-          
-          send :"#{artifact_type}_file_name", artifact_name 
+        else                     
+          found_file = send :existing_file_name, artifact_name, artifact_type if respond_to? :existing_file_name
+          # send :"#{artifact_type}_file_name", artifact_name
         end
 
         self.artifact_name = File.expand_path(artifact_name)
@@ -85,7 +83,7 @@ module RSpec::RailsApp::Artifact
         
         if artifact_type == :view
           yield content if block
-          return
+          return true
         end
         super content, &block     
       end          
@@ -113,8 +111,8 @@ module RSpec::RailsApp::Artifact
           "have the name: #{name}#{postfix} and be a subclass of: #{superclass}"
         when :class
           "have the name: #{name}#{postfix}"
-        else 
-          raise "Class type must be either :class or :subclass, was #{class_type}" 
+        else           
+          raise "Class type must be either :class or :subclass, was #{class_type}" if artifact_type != :view
         end
       end
   
