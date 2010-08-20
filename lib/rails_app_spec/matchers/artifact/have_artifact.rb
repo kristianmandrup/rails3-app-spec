@@ -68,9 +68,12 @@ module RSpec::RailsApp::Artifact
         self.artifact_name = case artifact_type
         when :view
           File.expand_path(send :"#{artifact_type}_file_name", folder, action, view_ext)          
-        else                     
-          found_file = send :existing_file_name, artifact_name, artifact_type if respond_to? :existing_file_name
-          # send :"#{artifact_type}_file_name", artifact_name
+        else                                                     
+          if respond_to? :existing_file_name
+            send :existing_file_name, artifact_name, artifact_type 
+          else
+            send :"#{artifact_type}_file_name", artifact_name
+          end
         end
 
         self.artifact_name = File.expand_path(artifact_name)
@@ -117,13 +120,13 @@ module RSpec::RailsApp::Artifact
       end
   
       def failure_message        
-        return "Expected the #{type} #{artifact_name} to exist, but it didn't" if !@file_found
+        return "Expected the #{artifact_type} #{artifact_name} to exist, but it didn't" if !@file_found
         puts "Content: #{content}"
         "Expected the file: #{artifact_name} to have a #{artifact_type} class. The class should #{should_be_msg}"        
       end
 
       def negative_failure_message
-        return "Did not expect the #{type} #{artifact_name} to exist, but it did" if !@file_found
+        return "Did not expect the #{artifact_type} #{artifact_name} to exist, but it did" if !@file_found
         puts "Content: #{content}"        
         "Did not expected the file: #{artifact_name} to have a #{artifact_type} class. The class should not #{should_be_msg}"                
       end    

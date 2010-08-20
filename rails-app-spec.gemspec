@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails-app-spec}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
@@ -38,7 +38,8 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/controller_spec.rb",
      "spec/rails_app_spec/matchers/artifact/helper_spec.rb",
      "spec/rails_app_spec/matchers/artifact/mailer_spec.rb",
-     "spec/rails_app_spec/matchers/artifact/migration_spec.rb",
+     "spec/rails_app_spec/matchers/artifact/migration/migration_simple_number_spec.rb",
+     "spec/rails_app_spec/matchers/artifact/migration/migration_spec.rb",
      "spec/rails_app_spec/matchers/artifact/model_spec.rb",
      "spec/rails_app_spec/matchers/artifact/observer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
@@ -56,7 +57,8 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/controller_spec.rb",
      "spec/rails_app_spec/matchers/artifact/helper_spec.rb",
      "spec/rails_app_spec/matchers/artifact/mailer_spec.rb",
-     "spec/rails_app_spec/matchers/artifact/migration_spec.rb",
+     "spec/rails_app_spec/matchers/artifact/migration/migration_simple_number_spec.rb",
+     "spec/rails_app_spec/matchers/artifact/migration/migration_spec.rb",
      "spec/rails_app_spec/matchers/artifact/model_spec.rb",
      "spec/rails_app_spec/matchers/artifact/observer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
