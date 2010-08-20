@@ -11,8 +11,8 @@ module RSpec::RailsApp::ArtifactFile
       }
     end
     
-    def have_view_file(relative, action='show', ext='html.erb')
-      have_rails_file "#{relative}/#{action}.#{ext}", :view
+    def have_view_file folder, action= :show, ext='html.erb'
+      have_rails_file "#{folder}/#{action}.#{ext}", :view
     end
     alias_method :contain_view_file, :have_view_file
   end

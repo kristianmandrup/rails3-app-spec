@@ -5,12 +5,18 @@ module RSpec::RailsApp::Artifact
     class HaveArtifact < RSpec::RubyContentMatcher
       
       include ::Rails::Assist::App
+
+      include Rails::Migration::Assist::ClassMethods
+      include ::Rails::Assist::BaseHelper::FileName
+      include ::Rails::Assist::Migration::FileName
     
       attr_accessor :artifact_type, :artifact_name, :class_type, :content       
       # class      
       attr_accessor :name, :type, :postfix           
       # subclass
       attr_accessor :superclass
+
+      attr_accessor :folder, :action, :view_ext
 
       SUPERCLASS_MAP = {
         :observer   => 'ActiveRecord::Observer', 
@@ -25,9 +31,19 @@ module RSpec::RailsApp::Artifact
       end
 
       def initialize(name, artifact_type)
-        # artifact file
         self.artifact_type = artifact_type
+
+        if name.kind_of? Hash                  
+          view_options  = name
+          self.folder   = view_options[:folder]
+          self.action   = view_options[:action] 
+          self.view_ext = view_options[:view_ext] 
+          self.artifact_type = :view
+          return nil
+        end        
+        
         self.postfix = artifact_type.to_s.camelize if has_postfix? artifact_type
+        self.artifact_name = name.to_s.downcase
         self.name = name.to_s.camelize
         
         case artifact_type
@@ -48,13 +64,29 @@ module RSpec::RailsApp::Artifact
         end
       end
 
-      def matches?(generator, &block)
-        self.artifact_name = File.expand_path(send :"#{artifact_type}_file_name", name.downcase)
+      def matches?(generator, &block)            
+        self.artifact_name = case artifact_type
+        when :view
+          File.expand_path(send :"#{artifact_type}_file_name", folder, action, view_ext)          
+        else
+          found_file = send :existing_file_name, artifact_name, artifact_type
+          return found_file if found_file
+          
+          send :"#{artifact_type}_file_name", artifact_name 
+        end
+
+        self.artifact_name = File.expand_path(artifact_name)
+        
         @file_found = File.file?(artifact_name)
         return nil if !@file_found
 
         # check file content for class or subclass
-        self.content = File.read(artifact_name)
+        self.content = File.read(artifact_name) 
+        
+        if artifact_type == :view
+          yield content if block
+          return
+        end
         super content, &block     
       end          
 
@@ -111,7 +143,13 @@ module RSpec::RailsApp::Artifact
         end
         alias_method :contain_#{name}, :have_#{name}
       }
-    end    
+    end  
+    
+    def have_view folder, action=nil, view_ext=nil      
+      arg = {:folder => folder, :action => action, :view_ext => view_ext}
+      have_artifact arg, :view
+    end
+    alias_method :contain_view, :have_view
   end
 end       
 

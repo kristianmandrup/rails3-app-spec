@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
+require 'spec_helper'
 
 describe 'model helper' do
   use_orm :active_record  

@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
+require 'spec_helper'
 
 describe 'rails view helper' do
   use_helper :view
@@ -16,12 +16,12 @@ describe 'rails view helper' do
   end
     
   it "should have an account/edit view file that displays a title" do      
-    root_dir.should have_view_file :account, :edit do |file|
-      file.should match /<%=\s*title\s*%>/
-    end
-
     root_dir.should have_view :account, :edit do |klass|
       file.should match /<%=\s*title\s*%>/
     end
+    
+    root_dir.should have_view_file :account, :edit do |file|
+      file.should match /<%=\s*title\s*%>/
+    end    
   end
 end
