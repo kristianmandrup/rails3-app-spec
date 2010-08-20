@@ -4,7 +4,7 @@ RSpec 2 matchers to spec the structure of your Rails 3 app
 
 ## Install
 
-<code>gem install rails3-app-spec</code>
+<code>gem install rails-app-spec</code>
 
 ## Usage
 
@@ -12,6 +12,9 @@ See specs for details on the API.
 
 Usage example (teaser):
 <pre>
+  require 'rails3_assist'
+  require 'rails-app-spec'  
+  
   Rails.root.should have_controller :account do |content|
     content.should have_method :index
   end
@@ -23,11 +26,6 @@ Usage example (teaser):
   end
 end  
 </pre>  
-
-## Known issues
-
-* View generation fails when action arg supplied :( To be fixed ASAP
- - rails3_assist/artifact/view.rb:7:in `[]' can't convert Symbol into Integer 
 
 ## Note on Patches/Pull Requests
  
