@@ -74,7 +74,11 @@ module RSpec::RailsApp::Artifact
         else                                                     
           find_existing_artifact_method = "existing_#{artifact_type}_file"
           if respond_to? find_existing_artifact_method
-            send find_existing_artifact_method, artifact_name, artifact_type, :root_path => root_path 
+            begin
+              send find_existing_artifact_method, artifact_name, artifact_type, :root_path => root_path 
+            rescue
+              nil
+            end
           else
             raise "The method ##{find_existing_artifact_method} to find the artifact was not available"
           end

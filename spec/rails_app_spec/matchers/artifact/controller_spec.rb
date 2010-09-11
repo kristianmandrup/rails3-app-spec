@@ -18,6 +18,10 @@ describe 'controller' do
   after :each do              
     remove_controller :account
   end
+
+  it "should not have an person controller file" do      
+    root_dir.should_not have_controller :person
+  end
     
   it "should have an account_controller file that contains an AccountController class with an index method inside" do      
     root_dir.should have_controller :account do |content|
