@@ -46,9 +46,7 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
      "spec/rails_app_spec/matchers/file/have_dir_spec.rb",
      "spec/rails_app_spec/matchers/file/have_file_spec.rb",
-     "spec/spec_helper.rb",
-     "tmp_rails/app/mailers/account_mailer.rb",
-     "tmp_rails/app/models/account_observer.rb"
+     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/rails-app-spec}
   s.rdoc_options = ["--charset=UTF-8"]

@@ -79,6 +79,7 @@ module RSpec::RailsApp::Artifact
             raise "The method ##{find_existing_artifact_method} to find the artifact was not available"
           end
         end
+        return nil if !artifact_name
 
         self.artifact_name = File.expand_path(artifact_name)
         
