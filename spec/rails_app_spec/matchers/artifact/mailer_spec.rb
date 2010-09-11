@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+root_dir = Rails3::Assist::Directory.rails_root
+
 describe 'mailer helper' do
   load_helper :mailer
 
@@ -13,7 +15,7 @@ describe 'mailer helper' do
   end
 
   after :each do              
-    remove_mailer :account
+    # remove_mailer :account
   end
     
   it "should have an account mailer file with a mail_it! method inside" do      

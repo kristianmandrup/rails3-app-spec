@@ -4,11 +4,11 @@ module RSpec::RailsApp::Artifact
   module Matchers
     class HaveArtifact < RSpec::RubyContentMatcher
       
-      include ::Rails::Assist::App
+      # include ::Rails3::Assist::Directory
 
-      include Rails::Migration::Assist::ClassMethods
-      include ::Rails::Assist::BaseHelper::FileName
-      include ::Rails::Assist::Migration::FileName
+      # include Rails::Migration::Assist::ClassMethods
+      include Rails3::Assist::Artifact::FileName
+      # include ::Rails3::Assist::Migration::FileName
     
       attr_accessor :artifact_type, :artifact_name, :class_type, :content       
       # class      
@@ -24,7 +24,7 @@ module RSpec::RailsApp::Artifact
         :migration  => 'ActiveRecord::Migration'
         }
 
-      POSTFIX = [:helper, :observer, :controller]
+      POSTFIX = [:helper, :observer, :controller, :mailer]
 
       def has_postfix? key
         POSTFIX.include? key
@@ -32,6 +32,8 @@ module RSpec::RailsApp::Artifact
 
       def initialize(name, artifact_type)
         self.artifact_type = artifact_type
+
+        extend "Rails3::Assist::Artifact::#{artifact_type.to_s.camelize}".constantize
 
         if name.kind_of? Hash                  
           view_options  = name
@@ -64,15 +66,15 @@ module RSpec::RailsApp::Artifact
         end
       end
 
-      def matches?(generator, &block)            
+      def matches?(root_path, &block)            
         self.artifact_name = case artifact_type
         when :view                                           
           find_view_method = "#{artifact_type}_file_name"
-          File.expand_path(send find_view_method, folder, action, view_ext)          
+          File.expand_path(send find_view_method, folder, action, view_ext, :root_path => root_path)          
         else                                                     
           find_existing_artifact_method = "existing_#{artifact_type}_file"
           if respond_to? find_existing_artifact_method
-            send find_existing_artifact_method, artifact_name, artifact_type 
+            send find_existing_artifact_method, artifact_name, artifact_type, :root_path => root_path 
           else
             raise "The method ##{find_existing_artifact_method} to find the artifact was not available"
           end
@@ -139,7 +141,7 @@ module RSpec::RailsApp::Artifact
     end
     alias_method :contain_artifact, :have_artifact
     
-    (::Rails::Assist.artifacts - [:view]).each do |name|
+    (::Rails3::Assist.artifacts - [:view]).each do |name|
       class_eval %{
         def have_#{name} relative
           have_artifact relative, :#{name}

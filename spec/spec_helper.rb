@@ -4,11 +4,11 @@ require 'rails-app-spec'
 
 RSpec.configure do |config| 
   config.before do                                         
-    Rails::Assist::App.rails_root_dir = temp_dir('tmp_rails')
+    Rails3::Assist::Directory.rails_root = temp_dir('tmp_rails')
   end
 
   config.after do
-    remove_temp_dir 'tmp_rails'
+    # remove_temp_dir 'tmp_rails'
   end
    
 end

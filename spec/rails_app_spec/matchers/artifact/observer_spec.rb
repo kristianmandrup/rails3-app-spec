@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+root_dir = Rails3::Assist::Directory.rails_root
+
 describe 'observer helper' do
   use_helper :observer
 

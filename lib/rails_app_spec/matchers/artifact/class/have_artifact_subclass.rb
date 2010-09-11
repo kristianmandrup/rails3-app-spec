@@ -22,7 +22,7 @@ module RSpec::RailsApp::ArtifactClass
 #    alias_method :be_observer_class, :have_observer_class
 
     def have_mailer_class klass   
-      have_artifact_subclass klass, 'ActionMailer::Base'
+      have_artifact_subclass klass, 'ActionMailer::Base', :mailer
     end      
 #    alias_method :be_mailer_class, :have_mailer_class
 

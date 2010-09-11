@@ -1,7 +1,9 @@
 require 'rspec'
+require 'rails3_artifactor'
 require 'rails3_assist'
 require 'require_all'
 require 'code-spec'
+require 'active_support/inflector'
 require 'file-spec'
 
 module RSpec

@@ -1,11 +1,10 @@
 module RSpec::RailsApp::ArtifactFile  
   module Matchers
-    include ::Rails::Assist::App
     
-    (::Rails::Assist.artifacts - [:view]).each do |name|
+    (::Rails3::Assist.artifacts - [:view]).each do |name|
       class_eval %{
         def have_#{name}_file relative
-          have_rails_file relative, :#{name}
+          have_rails_artifact_file relative, :#{name}
         end
         alias_method :contain_#{name}_file, :have_#{name}_file
       }

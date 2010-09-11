@@ -1,7 +1,9 @@
 require 'spec_helper'
 
+root_dir = Rails3::Assist::Directory.rails_root
+
 describe 'controller' do
-  use_helpers :app, :controller
+  use_helper :controller
   
   before :each do              
     create_empty_tmp :controller    

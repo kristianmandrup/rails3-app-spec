@@ -1,7 +1,6 @@
 module RSpec::RailsApp::Dir
   module Matchers    
     class HaveRailsDir    
-      include ::Rails::Assist::App
     
       attr_accessor :dir, :type
 
@@ -27,7 +26,7 @@ module RSpec::RailsApp::Dir
       HaveRailsDir.new(type)
     end
 
-    ::Rails::Assist::App::RailsDirs.root_directories.each do |name|
+    ::Rails3::Assist::Directory::Root.root_directories.each do |name|
       class_eval %{
         def have_#{name}_dir
           have_rails_dir :#{name}
@@ -35,7 +34,7 @@ module RSpec::RailsApp::Dir
       }
     end
 
-    ::Rails::Assist::App::RailsDirs.app_directories.each do |name|
+    ::Rails3::Assist::Directory::App.app_directories.each do |name|
       class_eval %{
         def have_#{name}_dir
           have_rails_dir :#{name}
