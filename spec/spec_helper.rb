@@ -8,7 +8,7 @@ RSpec.configure do |config|
   end
 
   config.after do
-    # remove_temp_dir 'tmp_rails'
+    remove_temp_dir 'tmp_rails'
   end
    
 end

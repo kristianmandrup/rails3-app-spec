@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
-  s.date = %q{2010-09-10}
+  s.date = %q{2010-09-11}
   s.description = %q{RSpec 2 matchers to spec the structure of your Rails 3 app}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/rails_app_spec/matchers/artifact/class/have_artifact_subclass.rb",
      "lib/rails_app_spec/matchers/artifact/have_artifact.rb",
      "lib/rails_app_spec/matchers/artifact/have_artifact_file.rb",
+     "lib/rails_app_spec/matchers/artifact/have_rails_artifact_file.rb",
      "lib/rails_app_spec/matchers/file/have_rails_dir.rb",
      "lib/rails_app_spec/matchers/file/have_rails_file.rb",
      "rails-app-spec.gemspec",
@@ -45,7 +46,9 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
      "spec/rails_app_spec/matchers/file/have_dir_spec.rb",
      "spec/rails_app_spec/matchers/file/have_file_spec.rb",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "tmp_rails/app/mailers/account_mailer.rb",
+     "tmp_rails/app/models/account_observer.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/rails-app-spec}
   s.rdoc_options = ["--charset=UTF-8"]
