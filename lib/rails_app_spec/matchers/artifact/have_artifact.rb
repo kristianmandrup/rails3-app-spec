@@ -68,7 +68,8 @@ module RSpec::RailsApp::Artifact
         end
       end
 
-      def matches?(root_path, &block)            
+      def matches?(root_path, &block)
+        @root_path = root_path
         artifact_found = case artifact_type
         when :view                                           
           find_view_method = "#{artifact_type}_file_name"
@@ -134,7 +135,7 @@ module RSpec::RailsApp::Artifact
       end
   
       def failure_message        
-        return "Expected the #{artifact_type} #{artifact_name} to exist at #{artifact_found}, but it didn't" if !@file_found
+        return "Expected the #{artifact_type} #{artifact_name} to exist at #{artifact_found} (root = #{@root_path}), but it didn't" if !@file_found
         puts "Content: #{content}"
         "Expected the file: #{artifact_name} to have a #{artifact_type} class. The class should #{should_be_msg}"        
       end

@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/rails_app_spec/matchers/artifact/have_rails_artifact_file.rb",
      "lib/rails_app_spec/matchers/file/have_rails_dir.rb",
      "lib/rails_app_spec/matchers/file/have_rails_file.rb",
+     "lib/rails_app_spec/namespaces.rb",
      "rails-app-spec.gemspec",
      "sandbox/dir_logic.rb",
      "sandbox/file_logic.rb",
