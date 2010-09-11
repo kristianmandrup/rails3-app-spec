@@ -37,6 +37,8 @@ describe 'migration' do
 
     root_dir.should_not have_migration :create_creative_accounting
 
+    # root_dir.should have_migration :create_creative_accounting
+
     root_dir.should have_migration :create_account
 
     root_dir.should have_migration :create_account do |migration_file|

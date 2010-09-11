@@ -79,7 +79,8 @@ module RSpec::RailsApp::Artifact
           if respond_to? find_existing_artifact_method
             begin
               send find_existing_artifact_method, artifact_name, artifact_type, :root_path => root_path 
-            rescue
+            rescue Exception => e 
+              @error_msg = e.message
               nil
             end
           else
@@ -135,7 +136,7 @@ module RSpec::RailsApp::Artifact
       end
   
       def failure_message        
-        return "Expected the #{artifact_type} #{artifact_name} to exist at #{artifact_found} (root = #{@root_path}), but it didn't" if !@file_found
+        return "Expected the #{artifact_type} #{artifact_name} to exist at #{artifact_found} (root = #{@root_path}), but it didn't. Error: #{@error_msg}" if !@file_found
         puts "Content: #{content}"
         "Expected the file: #{artifact_name} to have a #{artifact_type} class. The class should #{should_be_msg}"        
       end
