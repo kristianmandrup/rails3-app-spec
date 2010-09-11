@@ -17,6 +17,8 @@ module RSpec::RailsApp::Artifact
       attr_accessor :superclass
 
       attr_accessor :folder, :action, :view_ext
+      
+      attr_accessor :artifact_found
 
       SUPERCLASS_MAP = {
         :observer   => 'ActiveRecord::Observer', 
@@ -67,7 +69,7 @@ module RSpec::RailsApp::Artifact
       end
 
       def matches?(root_path, &block)            
-        self.artifact_name = case artifact_type
+        artifact_found = case artifact_type
         when :view                                           
           find_view_method = "#{artifact_type}_file_name"
           File.expand_path(send find_view_method, folder, action, view_ext, :root_path => root_path)          
@@ -83,15 +85,18 @@ module RSpec::RailsApp::Artifact
             raise "The method ##{find_existing_artifact_method} to find the artifact was not available"
           end
         end
-        return nil if !artifact_name
+        if !artifact_found
+          self.artifact_found = '[unknown]'
+          return nil
+        end
 
-        self.artifact_name = File.expand_path(artifact_name)
-        
-        @file_found = File.file?(artifact_name)
+        @file_found = File.file?(artifact_found)
         return nil if !@file_found
 
+        artifact_found = File.expand_path(artifact_found)        
+
         # check file content for class or subclass
-        self.content = File.read(artifact_name) 
+        self.content = File.read(artifact_found) 
         
         if artifact_type == :view
           yield content if block
@@ -129,13 +134,13 @@ module RSpec::RailsApp::Artifact
       end
   
       def failure_message        
-        return "Expected the #{artifact_type} #{artifact_name} to exist, but it didn't" if !@file_found
+        return "Expected the #{artifact_type} #{artifact_name} to exist at #{artifact_found}, but it didn't" if !@file_found
         puts "Content: #{content}"
         "Expected the file: #{artifact_name} to have a #{artifact_type} class. The class should #{should_be_msg}"        
       end
 
       def negative_failure_message
-        return "Did not expect the #{artifact_type} #{artifact_name} to exist, but it did" if !@file_found
+        return "Did not expect the #{artifact_type} #{artifact_name} to exist at #{artifact_found}, but it did" if !@file_found
         puts "Content: #{content}"        
         "Did not expected the file: #{artifact_name} to have a #{artifact_type} class. The class should not #{should_be_msg}"                
       end    

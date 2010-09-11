@@ -2,9 +2,11 @@ require 'spec_helper'
 
 Rails::Migration::Assist.orm = :active_record
 
+root_dir = Rails::Migration::Assist.rails_root_dir
+
 describe 'migration' do 
-  # use_orm :active_record
-  use_helpers :app, :migration
+  use_orm :active_record
+  use_helper :migration
 
   before :each do              
     remove_migration :create_account        
@@ -32,6 +34,8 @@ describe 'migration' do
 
     # puts migration_file_name :create_account
     existing_file_name :create_account, :migration
+
+    root_dir.should_not have_migration :create_creative_accounting
 
     root_dir.should have_migration :create_account
 
