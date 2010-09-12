@@ -3,12 +3,12 @@ module RSpec::RailsApp::ArtifactClass
     class HaveArtifactSubclass < RSpec::RubyContentMatchers::HaveSubclass
       def failure_message
         super
-        "Expected the code to have a #{postfix} subclass called #{name}"
+        "Expected the code to have a #{superclass} subclass called #{full_class}"
       end 
 
       def negative_failure_message
         super
-        "Did not expect he code to have a #{type} subclass called #{name}"
+        "Did not expect he code to have a #{superclass} subclass called #{full_class}"
       end      
     end
 
