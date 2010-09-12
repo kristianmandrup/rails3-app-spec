@@ -8,7 +8,7 @@ RSpec 2 matchers to spec the structure of your Rails 3 app
 
 ## Usage
 
-See specs for details on the API.
+See specs for more details on how to use the API.
 
 Usage example (teaser):
 <pre>
@@ -26,6 +26,8 @@ Usage example (teaser):
   end
 end  
 </pre>  
+
+This library takes advantage of *code-spec*, *file-spec* and other essential spec extensions I have created ;)
 
 ## Note on Patches/Pull Requests
  
