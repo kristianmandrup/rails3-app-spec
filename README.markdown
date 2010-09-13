@@ -29,6 +29,10 @@ end
 
 This library takes advantage of *code-spec*, *file-spec* and other essential spec extensions I have created ;)
 
+## TODO
+
+Create specs for the special file matchers to make sure they work for all edge cases!
+
 ## Note on Patches/Pull Requests
  
 * Fork the project.
