@@ -1,5 +1,4 @@
-require 'rspec'
-require 'rspec/autorun'
+require 'rspec/core'
 require 'rails-app-spec'
 
 RSpec.configure do |config| 
