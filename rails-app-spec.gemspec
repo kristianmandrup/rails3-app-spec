@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
-  s.date = %q{2010-09-12}
+  s.date = %q{2010-09-13}
   s.description = %q{RSpec 2 matchers to spec the structure of your Rails 3 app}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/rails_app_spec/matchers/artifact/have_rails_artifact_file.rb",
      "lib/rails_app_spec/matchers/file/have_rails_dir.rb",
      "lib/rails_app_spec/matchers/file/have_rails_file.rb",
+     "lib/rails_app_spec/matchers/special/have_app_config.rb",
      "lib/rails_app_spec/namespaces.rb",
      "rails-app-spec.gemspec",
      "sandbox/dir_logic.rb",
