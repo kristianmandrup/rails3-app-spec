@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+root_dir = Rails3::Assist::Directory.rails_root
+
 describe 'model helper' do
   use_orm :active_record  
 
