@@ -1,0 +1,33 @@
+module RSpec::RailsApp::ArtifactFile
+  module Matchers
+    class HaveRailsArtifactFiles
+      include ::Rails3::Assist::Artifact::FileName
+      include ArtifactFile::Matcher::Helper
+          
+      def initialize(artifact_type, *names)
+        @names = names
+        extend "Rails3::Assist::Artifact::#{artifact_type.to_s.camelize}".constantize
+
+        handle_view artifact_type, names
+
+        self.artifact_type = artifact_type        
+        self.artifact_name = name.to_s
+      end
+
+      def matches?(root_path, &block)
+        names.to_strings.each do |name|          
+          self.artifact_name = get_artifact_name
+          return false if !File.file?(artifact_name)
+        end
+        yield if block
+        true
+      end            
+    end
+
+    def have_rails_artifact_files(artifact_type, *names)
+      HaveRailsArtifactFiles.new(artifact_type, *names)
+    end
+    alias_method :contain_rails_artifact_files, :have_rails_artifact_files
+  end
+end
+

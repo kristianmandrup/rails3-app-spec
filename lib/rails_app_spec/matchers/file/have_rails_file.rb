@@ -1,10 +1,11 @@
+require 'rails_app_spec/matchers/file/rails_file_helper'
+
 module RSpec::RailsApp::File
   module Matchers    
     class HaveRailsFile
       include ::Rails3::Assist::Artifact
+      include RailsFile::Matcher::Helper
     
-      attr_reader :file, :type, :name
-
       def initialize(name, type = nil)
         @type = type if type
         @name = name
@@ -13,15 +14,7 @@ module RSpec::RailsApp::File
       def matches?(obj, &block)
         @file = type ? send(:"#{type}_file", name) : send(:"#{name}_file")
         File.file? file
-      end          
-  
-      def failure_message
-        "Expected Rails app to have file: #{file}, but it didn't"
-      end
-
-      def negative_failure_message
-        "Did not expected Rails app to have file: #{file}, but it did"
-      end   
+      end  
     end
 
     def have_rails_file(type = nil)

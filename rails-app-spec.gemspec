@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails-app-spec}
-  s.version = "0.2.5"
+  s.version = "0.2.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
@@ -33,6 +33,8 @@ Gem::Specification.new do |s|
      "lib/rails_app_spec/matchers/file/have_rails_dir.rb",
      "lib/rails_app_spec/matchers/file/have_rails_file.rb",
      "lib/rails_app_spec/matchers/special/have_app_config.rb",
+     "lib/rails_app_spec/matchers/special/have_gem.rb",
+     "lib/rails_app_spec/matchers/special/have_gems.rb",
      "lib/rails_app_spec/namespaces.rb",
      "lib/rails_app_spec/rspec.rb",
      "lib/rails_app_spec/rspec/configure.rb",
@@ -49,6 +51,9 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
      "spec/rails_app_spec/matchers/file/have_dir_spec.rb",
      "spec/rails_app_spec/matchers/file/have_file_spec.rb",
+     "spec/rails_app_spec/matchers/special/have_app_config_spec.rb",
+     "spec/rails_app_spec/matchers/special/have_gem_spec.rb",
+     "spec/rails_app_spec/matchers/special/have_gems_spec.rb",
      "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/rails-app-spec}
@@ -67,6 +72,9 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
      "spec/rails_app_spec/matchers/file/have_dir_spec.rb",
      "spec/rails_app_spec/matchers/file/have_file_spec.rb",
+     "spec/rails_app_spec/matchers/special/have_app_config_spec.rb",
+     "spec/rails_app_spec/matchers/special/have_gem_spec.rb",
+     "spec/rails_app_spec/matchers/special/have_gems_spec.rb",
      "spec/spec_helper.rb"
   ]
 

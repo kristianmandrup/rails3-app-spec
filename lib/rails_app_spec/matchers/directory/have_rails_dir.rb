@@ -1,4 +1,4 @@
-module RSpec::RailsApp::Dir
+module RSpec::RailsApp::Directory
   module Matchers    
     class HaveRailsDir    
     
