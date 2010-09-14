@@ -40,7 +40,7 @@ This library takes advantage of *code-spec*, *file-spec* and other essential spe
 
 ## TODO
 
-Create specs for the special file matchers to make sure they work for all edge cases!
+Finish specs for the file matchers including the special file matchers to make sure they work!
 
 ## Note on Patches/Pull Requests
  

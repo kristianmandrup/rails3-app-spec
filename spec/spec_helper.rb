@@ -8,8 +8,7 @@ RSpec.configure do |config|
 
   config.after do
     remove_temp_dir 'tmp_rails'
-  end
-   
+  end   
 end
 
 def project_dir

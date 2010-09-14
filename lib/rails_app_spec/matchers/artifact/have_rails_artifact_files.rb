@@ -28,6 +28,20 @@ module RSpec::RailsApp::ArtifactFile
       HaveRailsArtifactFiles.new(artifact_type, *names)
     end
     alias_method :contain_rails_artifact_files, :have_rails_artifact_files
+    
+    (::Rails3::Assist.artifacts - [:view]).each do |name|
+      class_eval %{
+        def have_#{name}_files *names
+          have_rails_artifact_files :#{name}, *names 
+        end
+        alias_method :contain_#{name}_files, :have_#{name}_files
+      }
+    end  
+    
+    def have_view_files *args
+      have_rails_artifact_files :view, *args
+    end
+    alias_method :contain_view_files, :have_view_files
   end
 end
 
