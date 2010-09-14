@@ -24,6 +24,15 @@ Usage example (teaser):
       klass.should have_method :index
     end
   end
+
+  Rails.root.should have_view_dirs :person, :post, :blog	
+
+  Rails.root.should have_model_dirs :admin, :editor
+
+  Rails.root.should have_controller_files :person, :post, :blog	
+
+  Rails.root.should have_stylesheet_files :light, :basic, :dark
+  Rails.root.should have_javascript_files :form_validation, :effects
 end  
 </pre>  
 

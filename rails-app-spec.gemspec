@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails-app-spec}
-  s.version = "0.2.6"
+  s.version = "0.2.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
-  s.date = %q{2010-09-13}
+  s.date = %q{2010-09-14}
   s.description = %q{RSpec 2 matchers to spec the structure of your Rails 3 app}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
@@ -25,13 +25,23 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/rails-app-spec.rb",
+     "lib/rails_app_spec/matchers.rb",
+     "lib/rails_app_spec/matchers/artifact.rb",
      "lib/rails_app_spec/matchers/artifact/class/have_artifact_class.rb",
      "lib/rails_app_spec/matchers/artifact/class/have_artifact_subclass.rb",
      "lib/rails_app_spec/matchers/artifact/have_artifact.rb",
      "lib/rails_app_spec/matchers/artifact/have_artifact_file.rb",
+     "lib/rails_app_spec/matchers/artifact/have_artifacts.rb",
      "lib/rails_app_spec/matchers/artifact/have_rails_artifact_file.rb",
-     "lib/rails_app_spec/matchers/file/have_rails_dir.rb",
+     "lib/rails_app_spec/matchers/artifact/have_rails_artifact_files.rb",
+     "lib/rails_app_spec/matchers/artifact/shared/artifact_file_helper.rb",
+     "lib/rails_app_spec/matchers/artifact/shared/artifact_helper.rb",
+     "lib/rails_app_spec/matchers/directory/have_artifact_dirs.rb",
+     "lib/rails_app_spec/matchers/directory/have_rails_dir.rb",
+     "lib/rails_app_spec/matchers/directory/have_rails_dirs.rb",
      "lib/rails_app_spec/matchers/file/have_rails_file.rb",
+     "lib/rails_app_spec/matchers/file/have_rails_files.rb",
+     "lib/rails_app_spec/matchers/file/rails_file_helper.rb",
      "lib/rails_app_spec/matchers/special/have_app_config.rb",
      "lib/rails_app_spec/matchers/special/have_gem.rb",
      "lib/rails_app_spec/matchers/special/have_gems.rb",
@@ -49,8 +59,10 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/model_spec.rb",
      "spec/rails_app_spec/matchers/artifact/observer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
-     "spec/rails_app_spec/matchers/file/have_dir_spec.rb",
-     "spec/rails_app_spec/matchers/file/have_file_spec.rb",
+     "spec/rails_app_spec/matchers/directory/have_rails_dir_spec.rb",
+     "spec/rails_app_spec/matchers/directory/have_rails_dirs_spec.rb",
+     "spec/rails_app_spec/matchers/file/have_rails_file_spec.rb",
+     "spec/rails_app_spec/matchers/file/have_rails_files_spec.rb",
      "spec/rails_app_spec/matchers/special/have_app_config_spec.rb",
      "spec/rails_app_spec/matchers/special/have_gem_spec.rb",
      "spec/rails_app_spec/matchers/special/have_gems_spec.rb",
@@ -70,8 +82,10 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/model_spec.rb",
      "spec/rails_app_spec/matchers/artifact/observer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
-     "spec/rails_app_spec/matchers/file/have_dir_spec.rb",
-     "spec/rails_app_spec/matchers/file/have_file_spec.rb",
+     "spec/rails_app_spec/matchers/directory/have_rails_dir_spec.rb",
+     "spec/rails_app_spec/matchers/directory/have_rails_dirs_spec.rb",
+     "spec/rails_app_spec/matchers/file/have_rails_file_spec.rb",
+     "spec/rails_app_spec/matchers/file/have_rails_files_spec.rb",
      "spec/rails_app_spec/matchers/special/have_app_config_spec.rb",
      "spec/rails_app_spec/matchers/special/have_gem_spec.rb",
      "spec/rails_app_spec/matchers/special/have_gems_spec.rb",
@@ -86,12 +100,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rspec>, ["~> 2.0.0.beta.22"])
       s.add_runtime_dependency(%q<require_all>, ["~> 1.1.0"])
       s.add_runtime_dependency(%q<rails3_artifactor>, ["~> 0.1.4"])
+      s.add_runtime_dependency(%q<sugar-high>, ["~> 0.2.6"])
       s.add_runtime_dependency(%q<code-spec>, ["~> 0.2.1"])
       s.add_runtime_dependency(%q<file-spec>, ["~> 0.1.1"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.0.0.beta.22"])
       s.add_dependency(%q<require_all>, ["~> 1.1.0"])
       s.add_dependency(%q<rails3_artifactor>, ["~> 0.1.4"])
+      s.add_dependency(%q<sugar-high>, ["~> 0.2.6"])
       s.add_dependency(%q<code-spec>, ["~> 0.2.1"])
       s.add_dependency(%q<file-spec>, ["~> 0.1.1"])
     end
@@ -99,6 +115,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rspec>, ["~> 2.0.0.beta.22"])
     s.add_dependency(%q<require_all>, ["~> 1.1.0"])
     s.add_dependency(%q<rails3_artifactor>, ["~> 0.1.4"])
+    s.add_dependency(%q<sugar-high>, ["~> 0.2.6"])
     s.add_dependency(%q<code-spec>, ["~> 0.2.1"])
     s.add_dependency(%q<file-spec>, ["~> 0.1.1"])
   end
