@@ -22,7 +22,18 @@ module ArtifactFile::Matcher
         lang_option = last_arg({:lang => 'erb.html'}, names)
         raise ArgumentException, ':folder option must be specified in the last hash argument for #have_views' if !lang_option[:folder]          
         self.folder = lang_option[:folder]
-        self.view_ext = lang_option[:lang] || {:lang => 'erb.html'}
+        self.view_ext = get_view_ext(lang_option[:lang] || :erb)
+      end
+    end
+    
+    def get_view_ext(ext)
+      case ext.to_sym
+      when :erb
+        'erb.html'
+      when :haml
+        'haml.html'
+      else
+        ext.to_s
       end
     end
     
