@@ -2,8 +2,8 @@ require 'spec_helper'
 
 root_dir = Rails3::Assist::Directory.rails_root
 
-describe 'controller' do
-  use_helper :directory
+describe 'Rails matcher: have_rails_dirs' do
+  use_helpers :directory, :app
   
   before :each do              
     create_empty_tmp :controller    

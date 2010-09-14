@@ -4,6 +4,7 @@ module RSpec::RailsApp::File
   module Matchers    
     class HaveRailsFile
       include ::Rails3::Assist::Artifact
+      include ::Rails3::Assist::File
       include RailsFile::Matcher::Helper
     
       def initialize(name, type = nil)
@@ -17,8 +18,8 @@ module RSpec::RailsApp::File
       end  
     end
 
-    def have_rails_file(type = nil)
-      HaveRailsFile.new(type)
+    def have_rails_file(name, type=nil)
+      HaveRailsFile.new(name, type)
     end
 
     [:initializer, :db, :migration, :locale, :javascript, :stylesheet].each do |name|

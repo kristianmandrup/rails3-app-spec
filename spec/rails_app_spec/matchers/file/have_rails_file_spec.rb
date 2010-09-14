@@ -2,8 +2,8 @@ require 'spec_helper'
 
 root_dir = Rails3::Assist::Directory.rails_root
 
-describe 'controller' do
-  use_helper :file
+describe 'Rails matcher: have_rails_file' do
+  use_helpers :file, :controller
   
   before :each do              
     create_controller :account do
@@ -13,13 +13,14 @@ describe 'controller' do
       }
     end    
 
-    create_javascript_file :effects do
+    create_javascript :effects do
       '# effects '
     end    
   end
 
   after :each do              
     remove_controller :account
+    remove_javascript :effects
   end
 
   it "should not have initializer :hello" do      

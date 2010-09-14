@@ -2,8 +2,8 @@ require 'spec_helper'
 
 root_dir = Rails3::Assist::Directory.rails_root
 
-describe 'controller' do
-  use_helper :directory, :file
+describe 'Rails matcher: have_app_config' do
+  use_helpers :directory, :file, :app
   
   before :each do     
     create_empty_tmp config_dir

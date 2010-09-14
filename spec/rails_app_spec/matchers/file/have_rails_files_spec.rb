@@ -2,8 +2,8 @@ require 'spec_helper'
 
 root_dir = Rails3::Assist::Directory.rails_root
 
-describe 'controller' do
-  use_helper :files, :file, :controller, :view
+describe 'Rails matcher: have_rails_files' do
+  use_helpers :files, :file, :controller, :view
   
   before :each do              
     create_controller :account do

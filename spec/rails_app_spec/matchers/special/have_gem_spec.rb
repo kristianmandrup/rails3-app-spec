@@ -2,8 +2,8 @@ require 'spec_helper'
 
 root_dir = Rails3::Assist::Directory.rails_root
 
-describe 'controller' do
-  use_helper :directory, :file
+describe 'Rails matcher: have_gem' do
+  use_helpers :directory, :file
   
   before :each do
     Dir.chdir root_dir do

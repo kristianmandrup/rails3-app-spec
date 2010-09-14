@@ -1,6 +1,8 @@
 module RSpec::RailsApp::Directory
   module Matchers    
     class HaveRailsDir    
+      extend Rails3::Assist::UseMacro
+      use_helper :directory
     
       attr_accessor :dir, :type
 
@@ -26,15 +28,7 @@ module RSpec::RailsApp::Directory
       HaveRailsDir.new(type)
     end
 
-    ::Rails3::Assist::Directory::Root.root_directories.each do |name|
-      class_eval %{
-        def have_#{name}_dir
-          have_rails_dir :#{name}
-        end    
-      }
-    end
-
-    ::Rails3::Assist::Directory::App.app_directories.each do |name|
+    (Rails3::Assist.artifacts + Rails3::Assist.specials(:all) + Rails3::Assist::Directory::Root.root_directories).each do |name|
       class_eval %{
         def have_#{name}_dir
           have_rails_dir :#{name}
