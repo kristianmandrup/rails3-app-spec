@@ -48,6 +48,6 @@ describe 'Rails matcher: have_rails_files' do
   end
   
   it "should have a view :effects, :noise" do      
-    root_dir.should have_view_files :show, :new, :folder => :person
+    root_dir.should have_view_files :edit, :new, :folder => :person
   end  
 end

@@ -10,13 +10,13 @@ module RSpec::RailsApp::ArtifactFile
 
         handle_view artifact_type, names
 
-        self.artifact_type = artifact_type        
+        @artifact_type = artifact_type        
       end
 
       def matches?(root_path, &block)
         names.to_strings.each do |name|       
-          self.artifact_name = name
-          self.artifact_name = get_artifact_name
+          @artifact_name = name
+          @artifact_name = get_artifact_name
           return false if !File.file?(artifact_name)
         end
         yield if block

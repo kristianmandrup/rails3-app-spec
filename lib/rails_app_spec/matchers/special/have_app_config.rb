@@ -6,19 +6,21 @@ module RSpec::RailsApp::Content
     class HaveAppConfig
       extend Rails3::Assist::UseMacro
       use_helpers :file
+
+      include Rails3::Assist::File::Special
+      include Rails3::Assist::File::Application
     
       attr_reader :left_side, :right_side, :operator
 
-      def initialize statement_hash
-        @left_side, @right_side = *statement.first
-        @operator = statement.last[:op] || '='
+      def initialize args
+        @left_side, @right_side = *args.first
+        @operator = last_arg_value({:op => '='}, args)
       end
 
       # TODO: relative to root_path ?
       def matches?(root_path=nil)      
         content = read_application_file
-        return nil if content.empty?
-      
+        return nil if content.empty?      
         ls, rs, op = escape_all(left_side, right_side, operator)
         (content =~ /config.#{ls}\s*#{op}\s*#{rs}/)
       end

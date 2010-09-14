@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-root_dir = Rails3::Assist::Directory.rails_root
+root = Rails3::Assist::Directory.rails_root
 
 describe 'Rails matcher: have_gems' do
   use_helpers :directory, :file
@@ -18,10 +18,10 @@ describe 'Rails matcher: have_gems' do
   end
 
   it "should have gems 'cancan', 'devise', 'roles'" do      
-    root_dir.should have_gems 'cancan', 'devise', 'roles'
+    root.should have_gems 'cancan', 'devise', 'roles'
   end    
 
   it "should not have gems 'cancan', 'devise', 'roles_are_us'" do      
-    root_dir.should have_gems 'cancan', 'devise', 'roles_are_us'
+    root.should have_gems 'cancan', 'devise', 'roles_are_us'
   end    
 end

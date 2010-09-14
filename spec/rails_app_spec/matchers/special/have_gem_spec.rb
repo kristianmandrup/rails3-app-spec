@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-root_dir = Rails3::Assist::Directory.rails_root
+root = Rails3::Assist::Directory.rails_root
 
 describe 'Rails matcher: have_gem' do
   use_helpers :directory, :file
   
   before :each do
+    puts "root: #{root_dir}"
     Dir.chdir root_dir do
       File.overwrite 'Gemfile' do
         %q{
@@ -17,14 +18,14 @@ describe 'Rails matcher: have_gem' do
   end
 
   it "should have gem 'cancan'" do      
-    root_dir.should have_gem 'cancan'
+    root.should have_gem 'cancan'
   end    
 
   it "should have gem 'devise' version 1.1" do      
-    root_dir.should have_gem 'cancan', '1.1'
+    root.should have_gem 'cancan', '1.1'
   end    
 
   it "should not have gem 'devise' version 1" do      
-    root_dir.should have_gem 'devise', '1'
+    root.should have_gem 'devise', '1'
   end    
 end

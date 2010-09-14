@@ -8,6 +8,8 @@ module RSpec::RailsApp::Content
     class HaveGem
       extend Rails3::Assist::UseMacro
       use_helpers :file
+      
+      include Rails3::Assist::File::Special            
     
       attr_reader :name, :version, :options
 
@@ -26,7 +28,7 @@ module RSpec::RailsApp::Content
 
       # TODO: relative to root_path ?
       def matches?(root_path=nil)      
-        content = read_gemfile
+        content = read_gem_file
         return nil if content.empty?    
         (content =~ /gem\s+#{name_expr}#{version_expr}/)
       end

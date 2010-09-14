@@ -10,9 +10,9 @@ module Artifact::Matcher
     attr_accessor :name, :type, :postfix           
     # subclass
     attr_accessor :superclass
-    attr_accessor :folder, :action, :view_ext    
-    attr_accessor :artifact_found
-    attr_reader :root_path
+    
+    attr_reader :folder, :action, :view_ext    
+    attr_reader :artifact_found, :root_path
 
     SUPERCLASS_MAP = {
       :observer   => 'ActiveRecord::Observer', 
@@ -27,34 +27,34 @@ module Artifact::Matcher
     end    
     
     def parse_type artifact_type
-      self.artifact_type = artifact_type      
-      self.postfix = artifact_type.to_s.camelize if has_postfix? artifact_type  
+      @artifact_type = artifact_type      
+      @postfix = artifact_type.to_s.camelize if has_postfix? artifact_type  
       case artifact_type
       when :helper, :controller
         # artifact class check 
-        self.class_type = :class
-        self.type = :class                          
+        @class_type = :class
+        @type = :class                          
       when :observer, :migration, :mailer
-        self.class_type = :subclass
+        @class_type = :subclass
         # artifact subclass check
-        self.superclass = SUPERCLASS_MAP[artifact_type]        
+        @superclass = SUPERCLASS_MAP[artifact_type]        
       when :model
         # check class == name
-        self.class_type = :class        
+        @class_type = :class        
       end
     end
 
     def parse_name name
       if name.kind_of? Hash                  
         view_options  = name
-        self.folder   = view_options[:folder]
-        self.action   = view_options[:action] 
-        self.view_ext = view_options[:view_ext] 
-        self.artifact_type = :view
+        @folder   = view_options[:folder]
+        @action   = view_options[:action] 
+        @view_ext = view_options[:view_ext] 
+        @artifact_type = :view
         return nil
       end
-      self.artifact_name = name.to_s.downcase
-      self.name = name.to_s.camelize
+      @artifact_name = name.to_s.downcase
+      @name = name.to_s.camelize
     end        
 
     def find_artifact
@@ -77,7 +77,7 @@ module Artifact::Matcher
         end
       end
       if !artifact_found
-        self.artifact_found = '[unknown]'
+        @artifact_found = '[unknown]'
         return nil
       end
   
