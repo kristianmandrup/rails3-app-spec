@@ -4,6 +4,7 @@ module RSpec::RailsApp::File
   module Matchers    
     class HaveRailsFiles
       include ::Rails3::Assist::Artifact
+      include ::Rails3::Assist::File
       include RailsFile::Matcher::Helper
     
       attr_reader :names
@@ -14,8 +15,10 @@ module RSpec::RailsApp::File
       end
 
       def matches?(obj, &block)
+        puts "type: #{type}"
         names.to_strings.each do |name|
           @name = name
+          puts "name: #{name}"
           @file = send(:"#{type}_file", name)
           return false if !File.file?(file)
         end

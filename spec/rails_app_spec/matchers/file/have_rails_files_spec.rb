@@ -5,7 +5,7 @@ root_dir = Rails3::Assist::Directory.rails_root
 describe 'Rails matcher: have_rails_files' do
   use_helpers :files, :file, :controller, :view
   
-  before :each do              
+  before :each do                  
     create_controller :account do
       'blip'
     end    
@@ -17,7 +17,7 @@ describe 'Rails matcher: have_rails_files' do
     create_javascript :effects do
       '# effects '
     end    
-
+    
     create_javascript :noise do
       '# noise '
     end    
@@ -25,14 +25,14 @@ describe 'Rails matcher: have_rails_files' do
     create_view :person, :edit do
       '# edit person '
     end    
-
+    
     create_view :person, :new do
       '# new person '
     end    
   end
 
   after :each do              
-    remove_controller :account
+    # remove_controller :account
   end
     
   it "should have a controller :account, :person" do      
@@ -47,7 +47,7 @@ describe 'Rails matcher: have_rails_files' do
     root_dir.should_not have_javascript_files :effects, :sound
   end
   
-  it "should have a js :effects, :noise" do      
+  it "should have a view :effects, :noise" do      
     root_dir.should have_view_files :show, :new, :folder => :person
   end  
 end
