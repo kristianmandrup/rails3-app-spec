@@ -25,6 +25,8 @@ Usage example (teaser):
     end
   end
 
+  Rails.root.should have_view_files :edit, :new, :show, :folder => :person	
+
   Rails.root.should have_view_dirs :person, :post, :blog	
 
   Rails.root.should have_model_dirs :admin, :editor
@@ -37,10 +39,6 @@ end
 </pre>  
 
 This library takes advantage of *code-spec*, *file-spec* and other essential spec extensions I have created ;)
-
-## TODO
-
-Finish specs for the file matchers including the special file matchers to make sure they work!
 
 ## Note on Patches/Pull Requests
  
