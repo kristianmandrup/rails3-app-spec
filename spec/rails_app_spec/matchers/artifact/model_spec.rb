@@ -4,18 +4,29 @@ root_dir = Rails3::Assist::Directory.rails_root
 
 describe 'model helper' do
   use_orm :active_record  
+  
+  before :each do
+    create_model :account do
+      %q{
+        # hello
+        def do_it
+        end
+      }
+    end
 
-  before :each do              
-    create_model :account, :content => '# hello'
+    create_model :person, :content => '# hello'
   end
 
   after :each do              
-    remove_model :account
+    remove_models :account, :person
   end
     
-  it "should have an :account model file that contains an Account class" do
+  it "should have an :account model file that contains an Account class" do 
+    puts read_model :account 
     root_dir.should have_model_file :account do |file|
       file.should have_model_class :account
+      file.should have_comment 'hello'
+      file.should have_method :do_it
     end
     root_dir.should have_model :account
   end
