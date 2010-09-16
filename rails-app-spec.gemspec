@@ -50,6 +50,7 @@ Gem::Specification.new do |s|
      "lib/rails_app_spec/rspec/configure.rb",
      "rails-app-spec.gemspec",
      "spec/rails_app_spec/matchers/artifact/controller_spec.rb",
+     "spec/rails_app_spec/matchers/artifact/core/have_artifacts_spec.rb",
      "spec/rails_app_spec/matchers/artifact/helper_spec.rb",
      "spec/rails_app_spec/matchers/artifact/mailer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/migration/migration_simple_number_spec.rb",
@@ -73,6 +74,7 @@ Gem::Specification.new do |s|
   s.summary = %q{RSpec 2 matchers to spec the structure of your Rails 3 app}
   s.test_files = [
     "spec/rails_app_spec/matchers/artifact/controller_spec.rb",
+     "spec/rails_app_spec/matchers/artifact/core/have_artifacts_spec.rb",
      "spec/rails_app_spec/matchers/artifact/helper_spec.rb",
      "spec/rails_app_spec/matchers/artifact/mailer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/migration/migration_simple_number_spec.rb",

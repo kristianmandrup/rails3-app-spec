@@ -12,6 +12,8 @@ module RSpec::RailsApp::Artifact
       def initialize(artifact_type, *names)
         extend "Rails3::Assist::Artifact::#{artifact_type.to_s.camelize}".constantize        
 
+        puts "init: #{artifact_type}, #{names}"
+
         @names = names
         parse_type artifact_type
         if artifact_type == :view
@@ -23,23 +25,35 @@ module RSpec::RailsApp::Artifact
 
       def matches?(root_path, &block)
         @root_path = root_path
-        
-        names.to_strings.each do |name|
-          parse_name name
-          artifact_found = find_artifact
 
-          # check file content for class or subclass
-          self.content = File.read(artifact_found) 
+        puts "matches: #{names}"
+        begin          
+          labels = names.to_strings          
+          return false if labels.empty?
+          labels.each do |name| 
+            parse_name name              
+            
+            @artifact_found = find_artifact
+            @artifact_name = name
+            
+            return false if !artifact_found
+            return false if !File.file? artifact_found
+
+            # check file content for class or subclass
+            self.content = File.read(artifact_found) 
         
-          res = if artifact_type == :view            
-            true
-          else
-            super content         
+            res = if artifact_type == :view            
+              true
+            else
+              super content         
+            end
+            return false if !res
           end
-          return false if !res
+          yield if block
+          true
+        rescue
+          nil
         end
-        yield if block
-        true
       end  
 
       protected

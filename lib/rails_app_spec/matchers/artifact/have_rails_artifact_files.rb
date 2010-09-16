@@ -14,13 +14,19 @@ module RSpec::RailsApp::ArtifactFile
       end
 
       def matches?(root_path, &block)
-        names.to_strings.each do |name|       
-          @artifact_name = name
-          @artifact_name = get_artifact_name
-          return false if !File.file?(artifact_name)
+        labels = names.to_strings          
+        return false if labels.empty?
+        begin
+          labels.each do |name|
+            @artifact_name = name
+            @artifact_name = get_artifact_name
+            return false if !File.file?(artifact_name)
+          end
+          yield if block
+          true
+        rescue
+          false
         end
-        yield if block
-        true
       end            
     end
 

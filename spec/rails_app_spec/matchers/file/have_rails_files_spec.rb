@@ -34,6 +34,10 @@ describe 'Rails matcher: have_rails_files' do
   after :each do              
     # remove_controller :account
   end
+
+  it "should not have a controller :account, :user" do      
+    root_dir.should_not have_controller_files :account, :user
+  end
     
   it "should have a controller :account, :person" do      
     root_dir.should have_controller_files :account, :person

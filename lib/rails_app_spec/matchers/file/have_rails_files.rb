@@ -15,10 +15,10 @@ module RSpec::RailsApp::File
       end
 
       def matches?(obj, &block)
-        puts "type: #{type}"
-        names.to_strings.each do |name|
+        labels = names.to_strings          
+        return false if labels.empty?
+        labels.each do |name| 
           @name = name
-          puts "name: #{name}"
           @file = send(:"#{type}_file", name)
           return false if !File.file?(file)
         end

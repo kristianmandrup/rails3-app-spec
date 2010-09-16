@@ -10,8 +10,10 @@ module RSpec::RailsApp::Directory
         @dirs = dirs
       end
 
-      def matches?(obj, &block)
-        dirs.to_strings.each do |dir_name|
+      def matches?(obj, &block)   
+        labels = dirs.to_strings          
+        return false if labels.empty?
+        labels.each do |dir_name|
           @dir_name = dir_name
           @dir = send :"#{dir_name}_dir"
           return false if !File.directory?(dir)
