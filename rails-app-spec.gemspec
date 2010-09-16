@@ -100,14 +100,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rspec>, ["~> 2.0.0.beta.22"])
       s.add_runtime_dependency(%q<require_all>, ["~> 1.1.0"])
       s.add_runtime_dependency(%q<rails3_artifactor>, ["~> 0.2.0"])
-      s.add_runtime_dependency(%q<sugar-high>, ["~> 0.2.7"])
+      s.add_runtime_dependency(%q<sugar-high>, ["~> 0.2.8"])
       s.add_runtime_dependency(%q<code-spec>, ["~> 0.2.1"])
       s.add_runtime_dependency(%q<file-spec>, ["~> 0.1.1"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.0.0.beta.22"])
       s.add_dependency(%q<require_all>, ["~> 1.1.0"])
       s.add_dependency(%q<rails3_artifactor>, ["~> 0.2.0"])
-      s.add_dependency(%q<sugar-high>, ["~> 0.2.7"])
+      s.add_dependency(%q<sugar-high>, ["~> 0.2.8"])
       s.add_dependency(%q<code-spec>, ["~> 0.2.1"])
       s.add_dependency(%q<file-spec>, ["~> 0.1.1"])
     end
@@ -115,7 +115,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rspec>, ["~> 2.0.0.beta.22"])
     s.add_dependency(%q<require_all>, ["~> 1.1.0"])
     s.add_dependency(%q<rails3_artifactor>, ["~> 0.2.0"])
-    s.add_dependency(%q<sugar-high>, ["~> 0.2.7"])
+    s.add_dependency(%q<sugar-high>, ["~> 0.2.8"])
     s.add_dependency(%q<code-spec>, ["~> 0.2.1"])
     s.add_dependency(%q<file-spec>, ["~> 0.1.1"])
   end
