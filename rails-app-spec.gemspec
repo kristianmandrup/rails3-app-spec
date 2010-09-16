@@ -49,8 +49,6 @@ Gem::Specification.new do |s|
      "lib/rails_app_spec/rspec.rb",
      "lib/rails_app_spec/rspec/configure.rb",
      "rails-app-spec.gemspec",
-     "sandbox/dir_logic.rb",
-     "sandbox/file_logic.rb",
      "spec/rails_app_spec/matchers/artifact/controller_spec.rb",
      "spec/rails_app_spec/matchers/artifact/helper_spec.rb",
      "spec/rails_app_spec/matchers/artifact/mailer_spec.rb",
