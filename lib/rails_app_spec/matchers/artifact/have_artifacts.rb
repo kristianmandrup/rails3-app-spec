@@ -11,9 +11,6 @@ module RSpec::RailsApp::Artifact
 
       def initialize(artifact_type, *names)
         extend "Rails3::Assist::Artifact::#{artifact_type.to_s.camelize}".constantize        
-
-        puts "init: #{artifact_type}, #{names}"
-
         @names = names
         parse_type artifact_type
         if artifact_type == :view
@@ -25,8 +22,6 @@ module RSpec::RailsApp::Artifact
 
       def matches?(root_path, &block)
         @root_path = root_path
-
-        puts "matches: #{names}"
         begin          
           labels = names.to_strings          
           return false if labels.empty?
