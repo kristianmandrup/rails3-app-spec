@@ -29,6 +29,7 @@ describe 'model helper' do
       file.should have_method :do_it
     end
     root_dir.should have_model :account
+    root_dir.should_not have_model :user    
   end
 end
 

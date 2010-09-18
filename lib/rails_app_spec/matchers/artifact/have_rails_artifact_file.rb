@@ -21,13 +21,16 @@ module RSpec::RailsApp::ArtifactFile
       end
 
       def matches?(root_path, &block)
-        self.artifact_name = get_artifact_name
-
-        match = File.file? artifact_name      
-        if block && match
-          yield File.read(artifact_name)
+        begin
+          self.artifact_name = get_artifact_name
+          match = File.file? artifact_name      
+          if block && match
+            yield File.read(artifact_name)
+          end
+          match        
+        rescue
+          false
         end
-        match        
       end        
     end
 

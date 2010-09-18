@@ -16,17 +16,21 @@ module RSpec::RailsApp::Artifact
 
       def matches?(root_path, &block)
         @root_path = root_path
-        artifact_found = find_artifact        
-        return nil if !artifact_found
+        begin
+          artifact_found = find_artifact                
+          return nil if !artifact_found
 
-        # check file content for class or subclass
-        self.content = File.read(artifact_found) 
+          # check file content for class or subclass
+          self.content = File.read(artifact_found) 
         
-        if artifact_type == :view
-          yield content if block
-          return true
+          if artifact_type == :view
+            yield content if block
+            return true
+          end
+          super content, &block     
+        rescue
+          false
         end
-        super content, &block     
       end   
     end
 

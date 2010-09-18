@@ -19,6 +19,7 @@ describe 'mailer helper' do
   end
     
   it "should have an account mailer file with a mail_it! method inside" do      
+    root_dir.should_not have_mailer :user
     root_dir.should have_mailer :account do |klass|
       klass.should have_method :mail_it!
     end

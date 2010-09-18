@@ -17,10 +17,11 @@ module Artifact::Matcher
     SUPERCLASS_MAP = {
       :observer   => 'ActiveRecord::Observer', 
       :mailer     => 'ActionMailer::Base',
-      :migration  => 'ActiveRecord::Migration'
+      :migration  => 'ActiveRecord::Migration',
+      :permit     => 'Permit::Base'
       }
 
-    POSTFIX = [:helper, :observer, :controller, :mailer]
+    POSTFIX = [:helper, :observer, :controller, :mailer, :permit]
 
     def has_postfix? key
       POSTFIX.include? key
@@ -29,12 +30,12 @@ module Artifact::Matcher
     def parse_type artifact_type
       @artifact_type = artifact_type      
       @postfix = artifact_type.to_s.camelize if has_postfix? artifact_type  
-      case artifact_type
+      case artifact_type       
       when :helper, :controller
         # artifact class check 
         @class_type = :class
         @type = :class                          
-      when :observer, :migration, :mailer
+      when :observer, :migration, :mailer, :permit
         @class_type = :subclass
         # artifact subclass check
         @superclass = SUPERCLASS_MAP[artifact_type]        
@@ -113,7 +114,7 @@ module Artifact::Matcher
       when :subclass
         "have the name: #{name}#{postfix} and be a subclass of: #{superclass}"
       when :class
-        "have the name: #{name}#{postfix}"
+        "have the name: #{name}#{postfix}"  
       else           
         raise "Class type must be either :class or :subclass, was #{class_type}" if artifact_type != :view
       end

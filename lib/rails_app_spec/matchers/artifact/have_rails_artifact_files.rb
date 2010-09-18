@@ -13,7 +13,7 @@ module RSpec::RailsApp::ArtifactFile
         @artifact_type = artifact_type        
       end
 
-      def matches?(root_path, &block)
+      def matches?(root_path, &block) 
         labels = names.to_strings          
         return false if labels.empty?
         begin

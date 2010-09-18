@@ -15,15 +15,19 @@ module RSpec::RailsApp::File
       end
 
       def matches?(obj, &block)
-        labels = names.to_strings          
-        return false if labels.empty?
-        labels.each do |name| 
-          @name = name
-          @file = send(:"#{type}_file", name)
-          return false if !File.file?(file)
+        begin
+          labels = names.to_strings          
+          return false if labels.empty?
+          labels.each do |name| 
+            @name = name
+            @file = send(:"#{type}_file", name)
+            return false if !File.file?(file)
+          end
+          yield if block
+          true
+        rescue
+          false
         end
-        yield if block
-        true
       end          
     end
 

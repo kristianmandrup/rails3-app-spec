@@ -13,8 +13,12 @@ module RSpec::RailsApp::File
       end
 
       def matches?(obj, &block)
-        @file = type ? send(:"#{type}_file", name) : send(:"#{name}_file")
-        File.file? file
+        begin
+          @file = type ? send(:"#{type}_file", name) : send(:"#{name}_file")
+          File.file? file
+        rescue
+          false
+        end
       end  
     end
 

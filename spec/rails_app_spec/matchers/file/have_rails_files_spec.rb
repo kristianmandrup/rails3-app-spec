@@ -41,6 +41,7 @@ describe 'Rails matcher: have_rails_files' do
     
   it "should have a controller :account, :person" do      
     root_dir.should have_controller_files :account, :person
+    root_dir.should_not have_model_files :account, :user
   end
 
   it "should have a js :effects, :noise" do      
@@ -53,5 +54,6 @@ describe 'Rails matcher: have_rails_files' do
   
   it "should have a view :effects, :noise" do      
     root_dir.should have_view_files :edit, :new, :folder => :person
+    root_dir.should_not have_view_files :edit, :unknown, :folder => :person    
   end  
 end
