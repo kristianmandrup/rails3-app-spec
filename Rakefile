@@ -2,8 +2,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rails-app-spec"
-    gem.summary = %Q{RSpec 2 matchers to spec the structure of your Rails 3 app}
-    gem.description = %Q{RSpec 2 matchers to spec the structure of your Rails 3 app}
+    gem.summary = %Q{Spec the structure of your Rails 3 app}
+    gem.description = %Q{RSpec 2 matchers to help spec the structure and content of your Rails 3 app}
     gem.email = "kmandrup@gmail.com"
     gem.homepage = "http://github.com/kristianmandrup/rails-app-spec"
     gem.authors = ["Kristian Mandrup"]

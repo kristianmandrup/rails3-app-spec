@@ -30,17 +30,16 @@ module Artifact::Matcher
     def parse_type artifact_type
       @artifact_type = artifact_type      
       @postfix = artifact_type.to_s.camelize if has_postfix? artifact_type  
+      @type = :class
       case artifact_type       
       when :helper, :controller
         # artifact class check 
-        @class_type = :class
-        @type = :class                          
+        @class_type = :class                                  
       when :observer, :migration, :mailer, :permit
         @class_type = :subclass
         # artifact subclass check
         @superclass = SUPERCLASS_MAP[artifact_type]        
       when :model
-        # check class == name
         @class_type = :class        
       end
     end
