@@ -23,7 +23,7 @@ module RSpec::RailsApp::Artifact
           return nil if !artifact_found
 
           # check file content for class or subclass
-          self.content = File.read(artifact_found) 
+          @content = File.read(artifact_found) 
         
           if artifact_type == :view
             yield content if block
