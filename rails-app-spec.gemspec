@@ -55,6 +55,7 @@ Gem::Specification.new do |s|
      "spec/rails_app_spec/matchers/artifact/mailer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/migration/migration_simple_number_spec.rb",
      "spec/rails_app_spec/matchers/artifact/migration/migration_spec.rb",
+     "spec/rails_app_spec/matchers/artifact/model_mongoid_spec.rb",
      "spec/rails_app_spec/matchers/artifact/model_spec.rb",
      "spec/rails_app_spec/matchers/artifact/observer_spec.rb",
      "spec/rails_app_spec/matchers/artifact/view_spec.rb",
