@@ -3,7 +3,9 @@
 module RSpec::RailsApp::Artifact
   module Matchers
     class HaveArtifact < RSpec::RubyContentMatcher      
-      include Rails3::Assist::Artifact::FileName
+      extend Rails3::Assist::UseMacro
+      use_helpers :file
+
       include Artifact::Matcher::Helper
 
       def initialize(name, artifact_type)

@@ -1,7 +1,8 @@
 module RSpec::RailsApp::ArtifactFile
   module Matchers
-    class HaveRailsArtifactFile
-      include ::Rails3::Assist::Artifact::FileName
+    class HaveRailsArtifactFile         
+      extend Rails3::Assist::UseMacro
+      use_helpers :file
     
       attr_accessor :name, :artifact_type, :artifact_name
       attr_accessor :folder, :action, :view_ext

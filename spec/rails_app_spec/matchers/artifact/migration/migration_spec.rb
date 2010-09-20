@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-Rails::Migration::Assist.orm = :active_record
+Rails3::Migration::Assist.orm = :active_record
 
-root_dir = Rails::Migration::Assist.rails_root_dir
+root_dir = Rails3::Migration::Assist.rails_root_dir
 
 describe 'migration' do 
   use_orm :active_record
