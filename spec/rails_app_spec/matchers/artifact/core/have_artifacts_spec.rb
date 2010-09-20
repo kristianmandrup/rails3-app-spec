@@ -26,7 +26,8 @@ describe 'controller' do
 
   it "should have model" do
     create_model :user
-    root_dir.should have_artifact :user, :model
+    root_dir.should have_artifact :user, :model 
+    puts read_model :user
     root_dir.should have_model :user
   end
     
