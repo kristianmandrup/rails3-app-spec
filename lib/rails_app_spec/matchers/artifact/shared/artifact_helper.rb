@@ -122,13 +122,13 @@ module Artifact::Matcher
     def failure_message        
       return "Expected the #{artifact_type} #{artifact_name} to exist at #{artifact_found} (root = #{@root_path}), but it didn't.\nError: #{@error_msg}.\n\nTrace:\n #{@trace}" if !@file_found
       puts "Content: #{content}"
-      "Expected the #{artifact_name} file at: #{artifact_found} to have a #{artifact_type} class. The class should #{should_be_msg}. Expr: #{main_expr}"        
+      "Expected the #{artifact_name} file at: #{artifact_found} to have a #{artifact_type} class. The class should #{should_be_msg}. RegExp: #{main_expr}"        
     end
 
     def negative_failure_message
       return "Did not expect the #{artifact_type} #{artifact_name} to exist at #{artifact_found}, but it did" if !@file_found
       puts "Content: #{content}"        
-      "Did not expected #{artifact_name} at file: #{artifact_found} to have a #{artifact_type} class. The class should not #{should_be_msg}. Expr: #{main_expr}"                
+      "Did not expected #{artifact_name} at file: #{artifact_found} to have a #{artifact_type} class. The class should not #{should_be_msg}. RegExp: #{main_expr}"                
     end    
   end
 end
