@@ -7,7 +7,7 @@ module RSpec::RailsApp::ArtifactFile
       attr_accessor :name, :artifact_type, :artifact_name
       attr_accessor :folder, :action, :view_ext
 
-      include ArtifactFile::Matcher::Helper
+      include ::ArtifactFile::Matcher::Helper
 
       def initialize(name, artifact_type = nil)
         self.artifact_type = artifact_type

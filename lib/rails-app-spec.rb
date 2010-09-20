@@ -1,5 +1,5 @@
 require 'rails3_artifactor'
-require 'rails3_assist'
+# require 'rails3_assist'
 require 'active_support/inflector'
 require 'require_all'
 require 'code-spec'
