@@ -1,4 +1,6 @@
 require 'rspec/core'
+require 'rails3_artifactor'
+require 'rails3_artifactor/rspec'
 require 'rails-app-spec'
 
 RSpec.configure do |config| 
