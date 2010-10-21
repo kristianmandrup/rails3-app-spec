@@ -10,8 +10,8 @@ begin
     gem.add_development_dependency "rspec", ">= 2.0"
 
     gem.add_dependency "rspec",             ">= 2.0"
-    gem.add_dependency "code-spec",         "~> 0.2.5"
-    gem.add_dependency "file-spec",         "~> 0.1.1"        
+    gem.add_dependency "code-spec",         "~> 0.2.7"
+    gem.add_dependency "file-spec",         "~> 0.1.3"        
 
     gem.add_dependency "activesupport",     "~> 3.0"
     gem.add_dependency "require_all",       "~> 1.2.0"

@@ -105,7 +105,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<file-spec>, ["~> 0.1.1"])
       s.add_runtime_dependency(%q<activesupport>, ["~> 3.0"])
       s.add_runtime_dependency(%q<require_all>, ["~> 1.2.0"])
-      s.add_runtime_dependency(%q<rails3_artifactor>, ["~> 0.2.5"])
+      s.add_runtime_dependency(%q<rails3_artifactor>, [">= 0.2.9"])
       s.add_runtime_dependency(%q<rails3_assist>, [">= 0.2.13"])
       s.add_runtime_dependency(%q<sugar-high>, ["~> 0.3.0"])
     else
@@ -115,7 +115,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<file-spec>, ["~> 0.1.1"])
       s.add_dependency(%q<activesupport>, ["~> 3.0"])
       s.add_dependency(%q<require_all>, ["~> 1.2.0"])
-      s.add_dependency(%q<rails3_artifactor>, ["~> 0.2.5"])
+      s.add_dependency(%q<rails3_artifactor>, [">= 0.2.9"])
       s.add_dependency(%q<rails3_assist>, [">= 0.2.13"])
       s.add_dependency(%q<sugar-high>, ["~> 0.3.0"])
     end
@@ -126,7 +126,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<file-spec>, ["~> 0.1.1"])
     s.add_dependency(%q<activesupport>, ["~> 3.0"])
     s.add_dependency(%q<require_all>, ["~> 1.2.0"])
-    s.add_dependency(%q<rails3_artifactor>, ["~> 0.2.5"])
+    s.add_dependency(%q<rails3_artifactor>, [">= 0.2.9"])
     s.add_dependency(%q<rails3_assist>, [">= 0.2.13"])
     s.add_dependency(%q<sugar-high>, ["~> 0.3.0"])
   end
