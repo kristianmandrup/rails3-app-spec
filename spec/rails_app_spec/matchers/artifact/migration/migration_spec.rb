@@ -41,7 +41,9 @@ describe 'migration' do
 
     root_dir.should have_migration :create_account
 
-    root_dir.should have_migration :create_account do |migration_file|
+    puts "ROOT DIR: '#{root_dir.inspect}'" 
+
+    nil.should have_migration :create_account do |migration_file|
       migration_file.should have_class_method :up
       migration_file.should have_comment 'hello'
       migration_file.should have_comment 'goodbye'
