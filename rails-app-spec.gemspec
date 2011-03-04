@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
     "lib/rails_app_spec/namespaces.rb",
     "lib/rails_app_spec/rspec.rb",
     "lib/rails_app_spec/rspec/configure.rb",
+    "rails-app-spec.gemspec",
     "spec/rails_app_spec/matchers/artifact/controller_spec.rb",
     "spec/rails_app_spec/matchers/artifact/core/have_artifacts_spec.rb",
     "spec/rails_app_spec/matchers/artifact/helper_spec.rb",
