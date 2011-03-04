@@ -1,7 +1,7 @@
 module RSpec::RailsApp::ArtifactFile  
   module Matchers
     
-    (::Rails3::Assist.artifacts - [:view]).each do |name|
+    (::RailsAssist.artifacts - [:view]).each do |name|
       class_eval %{
         def have_#{name}_file relative
           have_rails_artifact_file relative, :#{name}

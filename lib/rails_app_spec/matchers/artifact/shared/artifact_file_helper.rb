@@ -5,7 +5,7 @@ end
 
 module ArtifactFile::Matcher
   module Helper
-    include ::Rails3::Assist::Artifact::View::FileName
+    include ::RailsAssist::Artifact::View::FileName
     
     attr_reader :name, :artifact_type, :artifact_name
     attr_reader :folder, :action, :view_ext

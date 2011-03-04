@@ -1,7 +1,7 @@
 module RSpec::RailsApp::Directory
   module Matchers    
     class HaveRailsDirs    
-      extend Rails3::Assist::UseMacro
+      extend RailsAssist::UseMacro
       use_helper :directory
       
       attr_accessor :dir, :dir_name, :dirs

@@ -3,8 +3,8 @@ require 'rails_app_spec/matchers/file/rails_file_helper'
 module RSpec::RailsApp::File
   module Matchers    
     class HaveRailsFile
-      include ::Rails3::Assist::Artifact
-      include ::Rails3::Assist::File
+      include ::RailsAssist::Artifact
+      include ::RailsAssist::File
       include RailsFile::Matcher::Helper
     
       def initialize(name, type = nil)

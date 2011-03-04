@@ -1,7 +1,7 @@
 module RSpec::RailsApp::Directory
   module Matchers    
     class HaveArtifactDirs    
-      extend Rails3::Assist::UseMacro
+      extend RailsAssist::UseMacro
       use_helper :directory
     
       attr_accessor :artifact_type, :dir, :dir_name, :dirs
@@ -34,7 +34,7 @@ module RSpec::RailsApp::Directory
       end   
     end
     
-    ::Rails3::Assist::Directory::App.app_directories.each do |name|
+    ::RailsAssist::Directory::App.app_directories.each do |name|
       class_eval %{
         def have_#{name}_dirs *names
           have_artifact_dirs :#{name}, *names

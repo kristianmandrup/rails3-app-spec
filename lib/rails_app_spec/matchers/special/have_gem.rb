@@ -6,10 +6,10 @@ require 'sugar-high/kind_of'
 module RSpec::RailsApp::Content
   module Matchers
     class HaveGem
-      extend Rails3::Assist::UseMacro
+      extend RailsAssist::UseMacro
       use_helpers :file
       
-      include Rails3::Assist::File::Special            
+      include RailsAssist::File::Special            
     
       attr_reader :name, :version, :options
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-root_dir = Rails3::Assist::Directory.rails_root
+root_dir = RailsAssist::Directory.rails_root
 
 describe 'rails helper' do
   use_helper :helper

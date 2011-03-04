@@ -12,7 +12,7 @@ See specs for more details on how to use the API.
 
 Usage example (teaser):
 <pre>
-  require 'rails3_assist'
+  require 'rails_assist'
   require 'rails-app-spec'  
   
   Rails.root.should have_controller :account do |content|

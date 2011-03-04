@@ -4,11 +4,11 @@
 module RSpec::RailsApp::Content
   module Matchers
     class HaveAppConfig
-      extend Rails3::Assist::UseMacro
+      extend RailsAssist::UseMacro
       use_helpers :file
 
-      include Rails3::Assist::File::Special
-      include Rails3::Assist::File::Application
+      include RailsAssist::File::Special
+      include RailsAssist::File::Application
     
       attr_reader :left_side, :right_side, :operator
 

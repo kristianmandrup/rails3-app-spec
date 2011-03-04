@@ -3,13 +3,13 @@
 module RSpec::RailsApp::Artifact
   module Matchers
     class HaveArtifact < RSpec::RubyContentMatcher      
-      extend Rails3::Assist::UseMacro
+      extend RailsAssist::UseMacro
       use_helpers :file
 
       include Artifact::Matcher::Helper
 
       def initialize(name, artifact_type)
-        extend "Rails3::Assist::Artifact::#{artifact_type.to_s.camelize}".constantize
+        extend "RailsAssist::Artifact::#{artifact_type.to_s.camelize}".constantize
         
         parse_name name
         parse_type artifact_type
@@ -41,7 +41,7 @@ module RSpec::RailsApp::Artifact
     end
     alias_method :contain_artifact, :have_artifact
     
-    (::Rails3::Assist.artifacts - [:view]).each do |name|
+    (::RailsAssist.artifacts - [:view]).each do |name|
       class_eval %{
         def have_#{name} relative
           have_artifact relative, :#{name}

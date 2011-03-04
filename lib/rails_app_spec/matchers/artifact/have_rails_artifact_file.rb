@@ -1,7 +1,7 @@
 module RSpec::RailsApp::ArtifactFile
   module Matchers
     class HaveRailsArtifactFile         
-      extend Rails3::Assist::UseMacro
+      extend RailsAssist::UseMacro
       use_helpers :file
     
       attr_accessor :name, :artifact_type, :artifact_name
@@ -12,7 +12,7 @@ module RSpec::RailsApp::ArtifactFile
       def initialize(name, artifact_type = nil)
         self.artifact_type = artifact_type
 
-        extend "Rails3::Assist::Artifact::#{artifact_type.to_s.camelize}".constantize
+        extend "RailsAssist::Artifact::#{artifact_type.to_s.camelize}".constantize
         
         if name.kind_of? Hash                  
           set_view name

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-root = Rails3::Assist::Directory.rails_root
+root = RailsAssist::Directory.rails_root
 
 describe 'Rails matcher: have_gems' do
   use_helpers :directory, :file

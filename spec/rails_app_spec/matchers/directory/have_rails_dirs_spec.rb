@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-root_dir = Rails3::Assist::Directory.rails_root
+root_dir = RailsAssist::Directory.rails_root
 
 describe 'Rails matcher: have_rails_dirs' do
   use_helpers :directory, :app

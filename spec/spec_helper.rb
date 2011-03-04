@@ -1,11 +1,21 @@
 require 'rspec/core'
-require 'rails3_artifactor'
-require 'rails3_artifactor/rspec'
+require 'rails_artifactor'
+require 'rails_artifactor/rspec'
 require 'rails-app-spec'
+
+# require 'generator-spec'
+#                              
+# RSpec::Generator.configure do |config|
+#   config.debug = false
+#   config.remove_temp_dir = false # true
+#   config.default_rails_root(__FILE__) 
+#   config.lib = File.dirname(__FILE__) + '/../lib'
+#   config.logger = :stdout  
+# end
 
 RSpec.configure do |config| 
   config.before do                                         
-    Rails3::Assist::Directory.rails_root = temp_dir('tmp_rails')
+    RailsAssist::Directory.rails_root = temp_dir('tmp_rails')
   end
 
   config.after do
