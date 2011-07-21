@@ -1,29 +1,29 @@
 require 'spec_helper'
+require 'migration_assist'
 
-Rails3::Migration::Assist.orm = :active_record
+RailsAssist::Migration.orm = :active_record
 
-root_dir = Rails3::Migration::Assist.rails_root_dir
+root_dir = RailsAssist::Migration.rails_root_dir
 
 describe 'migration' do 
   use_orm :active_record
   use_helper :migration
 
-  before :each do              
-    remove_migration :create_account        
-    
+  before :each do
+    remove_migration :create_account
     create_migration :create_account do
       %q{  def self.up
   end
-  
+
   def self.down
   end}
-    end    
+    end
   end
 
-  after :each do              
+  after :each do
     remove_migration :create_account
   end
-    
+
   it "should have an create_account_migration file that contains an index method and two inserted comments" do
     insert_into_migration :create_account, :content => '# hello'
     insert_into_migration :create_account do
