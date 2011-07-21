@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails-app-spec}
-  s.version = "0.3.3"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Kristian Mandrup"]
-  s.date = %q{2011-03-04}
+  s.authors = [%q{Kristian Mandrup}]
+  s.date = %q{2011-07-21}
   s.description = %q{RSpec 2 matchers to help spec the structure and content of your Rails 3 app}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".rspec",
+    "Gemfile",
+    "Gemfile.lock",
     "LICENSE",
     "README.markdown",
     "Rakefile",
@@ -68,52 +70,47 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/rails-app-spec}
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.1}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
   s.summary = %q{Spec the structure of your Rails 3 app}
-  s.test_files = [
-    "spec/rails_app_spec/matchers/artifact/controller_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/core/have_artifacts_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/helper_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/mailer_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/migration/migration_simple_number_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/migration/migration_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/model_mongoid_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/model_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/observer_spec.rb",
-    "spec/rails_app_spec/matchers/artifact/view_spec.rb",
-    "spec/rails_app_spec/matchers/directory/have_rails_dir_spec.rb",
-    "spec/rails_app_spec/matchers/directory/have_rails_dirs_spec.rb",
-    "spec/rails_app_spec/matchers/file/have_rails_file_spec.rb",
-    "spec/rails_app_spec/matchers/file/have_rails_files_spec.rb",
-    "spec/rails_app_spec/matchers/special/have_app_config_spec.rb",
-    "spec/rails_app_spec/matchers/special/have_gem_spec.rb",
-    "spec/rails_app_spec/matchers/special/have_gems_spec.rb",
-    "spec/spec_helper.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rspec>, [">= 2.4.1"])
-      s.add_runtime_dependency(%q<code-spec>, [">= 0.2.9"])
-      s.add_runtime_dependency(%q<file-spec>, ["~> 0.2.0"])
-      s.add_runtime_dependency(%q<migration_assist>, ["~> 0.2.0"])
-      s.add_runtime_dependency(%q<rails_artifactor>, [">= 0.3.3"])
+      s.add_runtime_dependency(%q<code-spec>, ["~> 0.3.0"])
+      s.add_runtime_dependency(%q<file-spec>, ["~> 0.3.0"])
+      s.add_runtime_dependency(%q<migration_assist>, ["~> 0.3.1"])
+      s.add_runtime_dependency(%q<rails_artifactor>, ["~> 0.4.0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.0.10"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<require_all>, ["~> 1.2.0"])
     else
       s.add_dependency(%q<rspec>, [">= 2.4.1"])
-      s.add_dependency(%q<code-spec>, [">= 0.2.9"])
-      s.add_dependency(%q<file-spec>, ["~> 0.2.0"])
-      s.add_dependency(%q<migration_assist>, ["~> 0.2.0"])
-      s.add_dependency(%q<rails_artifactor>, [">= 0.3.3"])
+      s.add_dependency(%q<code-spec>, ["~> 0.3.0"])
+      s.add_dependency(%q<file-spec>, ["~> 0.3.0"])
+      s.add_dependency(%q<migration_assist>, ["~> 0.3.1"])
+      s.add_dependency(%q<rails_artifactor>, ["~> 0.4.0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
+      s.add_dependency(%q<bundler>, ["~> 1.0.10"])
+      s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<require_all>, ["~> 1.2.0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 2.4.1"])
-    s.add_dependency(%q<code-spec>, [">= 0.2.9"])
-    s.add_dependency(%q<file-spec>, ["~> 0.2.0"])
-    s.add_dependency(%q<migration_assist>, ["~> 0.2.0"])
-    s.add_dependency(%q<rails_artifactor>, [">= 0.3.3"])
+    s.add_dependency(%q<code-spec>, ["~> 0.3.0"])
+    s.add_dependency(%q<file-spec>, ["~> 0.3.0"])
+    s.add_dependency(%q<migration_assist>, ["~> 0.3.1"])
+    s.add_dependency(%q<rails_artifactor>, ["~> 0.4.0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
+    s.add_dependency(%q<bundler>, ["~> 1.0.10"])
+    s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<require_all>, ["~> 1.2.0"])
   end
 end
 
