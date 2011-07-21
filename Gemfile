@@ -5,4 +5,12 @@ gem "code-spec",         "~> 0.3.0"
 gem "file-spec",         "~> 0.3.0"
 gem 'migration_assist',  "~> 0.3.1"
 gem "rails_artifactor",  "~> 0.4.0"
+
+group :development do
+  gem "shoulda",  ">= 0"
+  gem "bundler",  "~> 1.0.10"
+  gem "jeweler",  "~> 1.6.4"
+  gem "rcov",     ">= 0"
+  gem "require_all",   "~> 1.2.0"
+end
  
