@@ -14,7 +14,7 @@ require 'rails-app-spec'
 # end
 
 RSpec.configure do |config| 
-  config.before do                                         
+  config.before
     RailsAssist::Directory.rails_root = temp_dir('tmp_rails')
   end
 

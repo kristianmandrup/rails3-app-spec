@@ -5,11 +5,11 @@ root_dir = RailsAssist::Directory.rails_root
 describe 'observer helper' do
   use_helper :observer
 
-  before :each do              
+  before :each do
     create_observer :account
   end
 
-  after :each do              
+  after :each do
     # remove_observer :account
   end
     

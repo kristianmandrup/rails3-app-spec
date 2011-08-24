@@ -17,10 +17,10 @@ describe 'model helper' do
     create_model :person, :content => '# hello'
   end
 
-  after :each do              
+  after :each do
     remove_models :account, :person
   end
-    
+
   it "should have an :account model file that contains an Account class" do 
     puts read_model :account 
     root_dir.should have_model_file :account do |file|
@@ -36,7 +36,7 @@ end
 describe 'model helper - no ORM helper' do
   use_helper :model
 
-  before :each do              
+  before :each do
     remove_model :account
   end
     

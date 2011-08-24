@@ -3,7 +3,7 @@ require 'spec_helper'
 root_dir = RailsAssist::Directory.rails_root
 
 describe 'model helper' do
-  use_orm :mongoid  
+  use_orm :mongoid
   
   before :each do
     create_model :account do
@@ -17,10 +17,10 @@ describe 'model helper' do
     create_model :person, :content => '# hello'
   end
 
-  after :each do              
+  after :each do
     remove_models :account, :person
   end
-    
+
   it "should have an :account model file that contains an Account class" do 
     puts read_model :account 
     root_dir.should have_model_file :account do |file|
