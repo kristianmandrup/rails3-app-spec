@@ -4,56 +4,56 @@ root_dir = RailsAssist::Directory.rails_root
 
 describe 'Rails matcher: have_rails_files' do
   use_helpers :files, :file, :controller, :view
-  
-  before :each do                  
+
+  before :each do
     create_controller :account do
       'blip'
-    end    
+    end
 
     create_controller :person do
       'blap'
-    end    
+    end
 
     create_javascript :effects do
       '# effects '
-    end    
-    
+    end
+
     create_javascript :noise do
       '# noise '
-    end    
+    end
 
     create_view :person, :edit do
       '# edit person '
-    end    
-    
+    end
+
     create_view :person, :new do
       '# new person '
-    end    
+    end
   end
 
-  after :each do              
+  after :each do
     # remove_controller :account
   end
 
-  it "should not have a controller :account, :user" do      
+  it "should not have a controller :account, :user" do
     root_dir.should_not have_controller_files :account, :user
   end
-    
-  it "should have a controller :account, :person" do      
+
+  it "should have a controller :account, :person" do
     root_dir.should have_controller_files :account, :person
     root_dir.should_not have_model_files :account, :user
   end
 
-  it "should have a js :effects, :noise" do      
+  it "should have a js :effects, :noise" do
     root_dir.should have_javascript_files :effects, :noise
   end
 
-  it "should not have a js files :effects, :sound" do      
+  it "should not have a js files :effects, :sound" do
     root_dir.should_not have_javascript_files :effects, :sound
   end
-  
-  it "should have a view :effects, :noise" do      
+
+  it "should have a view :effects, :noise" do
     root_dir.should have_view_files :edit, :new, :folder => :person
-    root_dir.should_not have_view_files :edit, :unknown, :folder => :person    
-  end  
+    root_dir.should_not have_view_files :edit, :unknown, :folder => :person
+  end
 end

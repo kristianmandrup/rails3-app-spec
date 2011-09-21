@@ -9,7 +9,7 @@ module RSpec::RailsApp::Content
 
       include RailsAssist::File::Special
       include RailsAssist::File::Application
-    
+
       attr_reader :left_side, :right_side, :operator
 
       def initialize args
@@ -18,9 +18,9 @@ module RSpec::RailsApp::Content
       end
 
       # TODO: relative to root_path ?
-      def matches?(root_path=nil)      
+      def matches?(root_path=nil)
         content = read_application_file
-        return nil if content.empty?      
+        return nil if content.empty?
         ls, rs, op = escape_all(left_side, right_side, operator)
         (content =~ /config.#{ls}\s*#{op}\s*#{rs}/)
       end
@@ -32,17 +32,17 @@ module RSpec::RailsApp::Content
       def msg
         "there to be the Application config statement '#{left_side} #{operator} #{right_side}' in config/application.rb"
       end
-  
+
       def failure_message
-        "Expected #{msg}" 
-      end 
-    
+        "Expected #{msg}"
+      end
+
       def negative_failure_message
         super
-        "Did not expect #{msg}" 
+        "Did not expect #{msg}"
       end
     end
-                    
+
     # config.autoload_paths += %W(#{Rails.root}/lib)
     # have_app_config :autoload_paths => '%W(#{Rails.root}/lib)', :op => '+='
     def have_app_config statement_hash

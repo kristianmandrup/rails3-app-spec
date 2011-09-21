@@ -5,18 +5,18 @@ module RSpec::RailsApp::ArtifactFile
       use_helpers :file
 
       include ::ArtifactFile::Matcher::Helper
-          
+
       def initialize(artifact_type, *names)
         @names = names
         extend "RailsAssist::Artifact::#{artifact_type.to_s.camelize}".constantize
 
         handle_view artifact_type, names
 
-        @artifact_type = artifact_type        
+        @artifact_type = artifact_type
       end
 
-      def matches?(root_path, &block) 
-        labels = names.to_strings          
+      def matches?(root_path, &block)
+        labels = names.to_strings
         return false if labels.empty?
         begin
           labels.each do |name|
@@ -29,14 +29,14 @@ module RSpec::RailsApp::ArtifactFile
         rescue
           false
         end
-      end            
+      end
     end
 
     def have_rails_artifact_files(artifact_type, *names)
       HaveRailsArtifactFiles.new(artifact_type, *names)
     end
     alias_method :contain_rails_artifact_files, :have_rails_artifact_files
-    
+
     (::RailsAssist.artifacts - [:view]).each do |name|
       class_eval %{
         def have_#{name}_files *names
@@ -44,8 +44,8 @@ module RSpec::RailsApp::ArtifactFile
         end
         alias_method :contain_#{name}_files, :have_#{name}_files
       }
-    end  
-    
+    end
+
     def have_view_files *args
       have_rails_artifact_files :view, *args
     end

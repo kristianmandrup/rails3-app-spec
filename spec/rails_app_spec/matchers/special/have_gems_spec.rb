@@ -4,7 +4,7 @@ root = RailsAssist::Directory.rails_root
 
 describe 'Rails matcher: have_gems' do
   use_helpers :directory, :file
-  
+
   before :each do
     Dir.chdir root_dir do
       File.overwrite 'Gemfile' do
@@ -13,15 +13,15 @@ describe 'Rails matcher: have_gems' do
           gem "devise", '1.1'
           gem "roles"
         }
-      end    
+      end
     end
   end
 
-  it "should have gems 'cancan', 'devise', 'roles'" do      
+  it "should have gems 'cancan', 'devise', 'roles'" do
     root.should have_gems 'cancan', 'devise', 'roles'
-  end    
+  end
 
-  it "should not have gems 'cancan', 'devise', 'roles_are_us'" do      
+  it "should not have gems 'cancan', 'devise', 'roles_are_us'" do
     root.should have_gems 'cancan', 'devise', 'roles_are_us'
-  end    
+  end
 end

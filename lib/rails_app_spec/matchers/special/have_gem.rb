@@ -8,9 +8,9 @@ module RSpec::RailsApp::Content
     class HaveGem
       extend RailsAssist::UseMacro
       use_helpers :file
-      
-      include RailsAssist::File::Special            
-    
+
+      include RailsAssist::File::Special
+
       attr_reader :name, :version, :options
 
       def initialize *args
@@ -18,7 +18,7 @@ module RSpec::RailsApp::Content
         @name = args.delete_at(0)
         return if args.size == 0 || !args[1].kind_of_label? 
 
-        @version = args.delete_at(1) 
+        @version = args.delete_at(1)
         @options = {}
 
         return if args.empty?
@@ -27,9 +27,9 @@ module RSpec::RailsApp::Content
       end
 
       # TODO: relative to root_path ?
-      def matches?(root_path=nil)      
+      def matches?(root_path=nil)
         content = read_gem_file
-        return nil if content.empty?    
+        return nil if content.empty?
         (content =~ /gem\s+#{name_expr}#{version_expr}/)
       end
 
@@ -44,20 +44,19 @@ module RSpec::RailsApp::Content
       def msg
         "the Gemfile to have a gem statement: gem '#{name}'#{version_txt}'"
       end
-      
+
       def version_txt
         version ? ", '#{version}'" : ""
       end
-  
+
       def failure_message
-        "Expected #{msg}" 
-      end 
-    
+        "Expected #{msg}"
+      end
+
       def negative_failure_message
-        "Did not expect #{msg}" 
+        "Did not expect #{msg}"
       end
     end
-                    
     # config.autoload_paths += %W(#{Rails.root}/lib)
     # have_app_config :autoload_paths => '%W(#{Rails.root}/lib)', :op => '+='
     def have_gem *args

@@ -1,9 +1,9 @@
 module RSpec::RailsApp::Directory
-  module Matchers    
-    class HaveArtifactDirs    
+  module Matchers
+    class HaveArtifactDirs
       extend RailsAssist::UseMacro
       use_helper :directory
-    
+
       attr_accessor :artifact_type, :dir, :dir_name, :dirs
 
       def initialize artifact_type, *dirs
@@ -19,27 +19,27 @@ module RSpec::RailsApp::Directory
         end
         yield if block
         true
-      end          
-  
+      end
+
       def msg
         "Rails app to have the #{artifact_type} dir: #{dir_name}"
       end
-  
+
       def failure_message
         "Expected #{msg}"
       end
 
       def negative_failure_message
         "Did not expect #{msg}"
-      end   
+      end
     end
-    
+
     ::RailsAssist::Directory::App.app_directories.each do |name|
       class_eval %{
         def have_#{name}_dirs *names
           have_artifact_dirs :#{name}, *names
-        end    
+        end
       }
-    end    
+    end
   end
 end

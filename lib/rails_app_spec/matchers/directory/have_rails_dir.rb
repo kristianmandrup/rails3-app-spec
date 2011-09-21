@@ -1,9 +1,9 @@
 module RSpec::RailsApp::Directory
-  module Matchers    
-    class HaveRailsDir    
+  module Matchers
+    class HaveRailsDir
       extend RailsAssist::UseMacro
       use_helper :directory
-    
+
       attr_accessor :dir, :type
 
       def initialize(type = nil)
@@ -13,15 +13,15 @@ module RSpec::RailsApp::Directory
       def matches?(obj, &block)
         @dir = send :"#{type}_dir"
         File.directory? dir
-      end          
-  
+      end
+
       def failure_message
         "Expected Rails app to have dir: #{relative_path}, but it didn't"
       end
 
       def negative_failure_message
         "Did not expected Rails app to have dir: #{relative_path}, but it did"
-      end   
+      end
     end
 
     def have_rails_dir(type = nil)
@@ -32,7 +32,7 @@ module RSpec::RailsApp::Directory
       class_eval %{
         def have_#{name}_dir
           have_rails_dir :#{name}
-        end    
+        end
       }
     end
   end

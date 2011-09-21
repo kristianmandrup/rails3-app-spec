@@ -11,7 +11,7 @@ module RSpec::RailsApp::Content
       use_helpers :file
 
       include RailsAssist::File::Special
-    
+
       attr_reader :names, :name
 
       def initialize *names
@@ -19,9 +19,9 @@ module RSpec::RailsApp::Content
       end
 
       # TODO: relative to root_path ?
-      def matches?(root_path=nil)      
+      def matches?(root_path=nil)
         content = read_gem_file
-        return nil if content.empty?    
+        return nil if content.empty?
         names.each do |name|
           (content =~ /gem\s+#{name_expr(name)}/)
         end
@@ -35,20 +35,20 @@ module RSpec::RailsApp::Content
       def msg
         "the Gemfile to have a gem statement: gem '#{name}'"
       end
-      
+
       def version_txt
         version ? ", '#{version}'" : ""
       end
-  
+
       def failure_message
-        "Expected #{msg}" 
-      end 
-    
+        "Expected #{msg}"
+      end
+
       def negative_failure_message
-        "Did not expect #{msg}" 
+        "Did not expect #{msg}"
       end
     end
-                    
+
     # config.autoload_paths += %W(#{Rails.root}/lib)
     # have_app_config :autoload_paths => '%W(#{Rails.root}/lib)', :op => '+='
     def have_gems *names
